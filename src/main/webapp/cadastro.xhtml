@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Cadastro de Usuários</title>
+    <link rel="stylesheet" href="_css/main.css" />
+</h:head>
+
+<h:body>
+
+    <main class="container">
+
+        <h1>Cadastro de usuários</h1>
+
+        <p>Digite um nome para realizar o cadastro.</p>
+
+        <h:form id="cadastro">
+
+            <h:outputLabel for="nome" value="Nome:" />
+
+            <h:inputText
+                id="nome"
+                value="#{pessoa.nome}"
+                styleClass="campo"
+                required="true"
+                requiredMessage="Digite um nome."
+            />
+
+            <h:message for="nome" styleClass="erro" />
+
+            <h:commandButton
+                value="Cadastrar"
+                action="#{pessoa.cadastrar}"
+                styleClass="botao"
+            />
+
+            <h2>Usuários cadastrados</h2>
+
+            <h:dataTable
+                value="#{pessoa.listaUsuarios.nomes}"
+                var="usuario"
+                styleClass="tabela">
+
+                <h:column>
+                    #{usuario}
+                </h:column>
+
+            </h:dataTable>
+
+        </h:form>
+
+    </main>
+
+</h:body>
+</html>
